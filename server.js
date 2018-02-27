@@ -89,7 +89,7 @@ function updateComment(url, request) {
     return { status: 400 };
   }
 
-  const id = extractId(url);;
+  const id = extractId(url);
   const savedComment = database.comments[id];
   if (!savedComment) {
     return { status: 404 };
@@ -100,7 +100,7 @@ function updateComment(url, request) {
 }
 
 function deleteComment(url) {
-  const id = extractId(url);;
+  const id = extractId(url);
   const savedComment = database.comments[id];
   if (!savedComment) {
     return { status: 404 };
@@ -118,7 +118,7 @@ function deleteComment(url) {
 }
 
 function upvoteComment(url, request) {
-  const id = extractId(url);;
+  const id = extractId(url);
   const username = request.body && request.body.username;
   const savedComment = database.comments[id];
   if (!savedComment || !database.users[username]) {
@@ -130,7 +130,7 @@ function upvoteComment(url, request) {
 }
 
 function downvoteComment(url, request) {
-  const id = extractId(url);;
+  const id = extractId(url);
   const username = request.body && request.body.username;
   const savedComment = database.comments[id];
   if (!savedComment || !database.users[username]) {
@@ -204,7 +204,7 @@ function getArticles(url, request) {
 }
 
 function getArticle(url, request) {
-  const id = extractId(url);;
+  const id = extractId(url);
   const article = database.articles[id];
   const response = {};
 
@@ -252,7 +252,7 @@ function createArticle(url, request) {
 }
 
 function updateArticle(url, request) {
-  const id = extractId(url);;
+  const id = extractId(url);
   const savedArticle = database.articles[id];
   const requestArticle = request.body && request.body.article;
   const response = {};
@@ -273,7 +273,7 @@ function updateArticle(url, request) {
 }
 
 function deleteArticle(url, request) {
-  const id = extractId(url);;
+  const id = extractId(url);
   const savedArticle = database.articles[id];
   const response = {};
 
@@ -296,7 +296,7 @@ function deleteArticle(url, request) {
 }
 
 function upvoteArticle(url, request) {
-  const id = extractId(url);;
+  const id = extractId(url);
   const username = request.body && request.body.username;
   let savedArticle = database.articles[id];
   const response = {};
@@ -314,7 +314,7 @@ function upvoteArticle(url, request) {
 }
 
 function downvoteArticle(url, request) {
-  const id = extractId(url);;
+  const id = extractId(url);
   const username = request.body && request.body.username;
   let savedArticle = database.articles[id];
   const response = {};
@@ -431,7 +431,6 @@ if (typeof loadDatabase === 'function' && !isTestMode) {
 }
 
 const server = http.createServer(requestHandler);
-
 server.listen(port, (err) => {
   if (err) {
     return console.log('Server did not start succesfully: ', err);

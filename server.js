@@ -212,7 +212,7 @@ function getArticle(url, request) {
     article.comments = article.commentIds.map(
       commentId => database.comments[commentId]);
 
-    response.body = { article: article };
+    response.body = { article };
     response.status = 200;
   } else if (id) {
     response.status = 404;
@@ -242,7 +242,7 @@ function createArticle(url, request) {
     database.articles[article.id] = article;
     database.users[article.username].articleIds.push(article.id);
 
-    response.body = { article: article };
+    response.body = { article };
     response.status = 201;
   } else {
     response.status = 400;
